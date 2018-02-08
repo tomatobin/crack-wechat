@@ -1,0 +1,395 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8600E5271DD2CF2000D60BFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8600E5261DD2CF2000D60BFA /* Foundation.framework */; };
+		8600E5291DD2CF2000D60BFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8600E5281DD2CF2000D60BFA /* UIKit.framework */; };
+		8600E5351DD2CF2000D60BFA /* CrackWeChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 8600E5341DD2CF2000D60BFA /* CrackWeChat.m */; };
+		8600E53F1DD2CF5400D60BFA /* CaptainHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 8600E53E1DD2CF5400D60BFA /* CaptainHook.h */; };
+		863D9AA120284B4600ED4F50 /* LLSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9A9A20284B4500ED4F50 /* LLSettingController.m */; };
+		863D9AA220284B4600ED4F50 /* WCRedEnvelopesHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 863D9A9C20284B4500ED4F50 /* WCRedEnvelopesHelper.h */; };
+		863D9AA320284B4600ED4F50 /* LLRedEnvelopesMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9A9E20284B4500ED4F50 /* LLRedEnvelopesMgr.m */; };
+		863D9AA420284B4600ED4F50 /* LLSettingController.h in Headers */ = {isa = PBXBuildFile; fileRef = 863D9A9F20284B4600ED4F50 /* LLSettingController.h */; };
+		863D9AA520284B4600ED4F50 /* LLRedEnvelopesMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = 863D9AA020284B4600ED4F50 /* LLRedEnvelopesMgr.h */; };
+		863D9AA720284B8600ED4F50 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 863D9AA620284B8600ED4F50 /* CoreLocation.framework */; };
+		863D9AA920284B8B00ED4F50 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 863D9AA820284B8B00ED4F50 /* AVFoundation.framework */; };
+		863D9AAE20284D7900ED4F50 /* CMessageMgr-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9AAC20284D7900ED4F50 /* CMessageMgr-Hook.m */; };
+		863D9AB220284EAD00ED4F50 /* MMLocationMgr-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9AB020284EAD00ED4F50 /* MMLocationMgr-Hook.m */; };
+		863D9AB6202850BF00ED4F50 /* QMapView-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9AB4202850BF00ED4F50 /* QMapView-Hook.m */; };
+		863D9ABA2028546200ED4F50 /* Main-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9AB82028546200ED4F50 /* Main-Hook.m */; };
+		863D9ABE2028561F00ED4F50 /* WCRedEnvelopesReceiveHomeView-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9ABC2028561F00ED4F50 /* WCRedEnvelopesReceiveHomeView-Hook.m */; };
+		863D9AC02028578100ED4F50 /* MMUIWindow-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9ABF2028578100ED4F50 /* MMUIWindow-Hook.m */; };
+		863D9AC2202858CA00ED4F50 /* NewSettingViewController-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9AC1202858CA00ED4F50 /* NewSettingViewController-Hook.m */; };
+		863D9ADB202ACAE500ED4F50 /* WCDeviceStepObject-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9ADA202ACAE500ED4F50 /* WCDeviceStepObject-Hook.m */; };
+		863D9ADD202ACE9600ED4F50 /* UIViewController-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9ADC202ACE9600ED4F50 /* UIViewController-Hook.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8600E5231DD2CF2000D60BFA /* libCrackWeChat.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCrackWeChat.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		8600E5261DD2CF2000D60BFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8600E5281DD2CF2000D60BFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8600E52D1DD2CF2000D60BFA /* control.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = control.txt; path = Package/DEBIAN/control.txt; sourceTree = "<group>"; };
+		8600E52E1DD2CF2000D60BFA /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
+		8600E5301DD2CF2000D60BFA /* PackageVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PackageVersion.plist; sourceTree = "<group>"; };
+		8600E5311DD2CF2000D60BFA /* CrackWeChat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CrackWeChat-Prefix.pch"; sourceTree = "<group>"; };
+		8600E5341DD2CF2000D60BFA /* CrackWeChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrackWeChat.m; sourceTree = "<group>"; };
+		8600E5381DD2CF2000D60BFA /* 0xdeadfa11 */ = {isa = PBXFileReference; lastKnownFileType = text; name = 0xdeadfa11; path = Package/usr/lib/0xdeadfa11; sourceTree = "<group>"; };
+		8600E53E1DD2CF5400D60BFA /* CaptainHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptainHook.h; sourceTree = "<group>"; };
+		863D9A9A20284B4500ED4F50 /* LLSettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSettingController.m; sourceTree = "<group>"; };
+		863D9A9C20284B4500ED4F50 /* WCRedEnvelopesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCRedEnvelopesHelper.h; sourceTree = "<group>"; };
+		863D9A9E20284B4500ED4F50 /* LLRedEnvelopesMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLRedEnvelopesMgr.m; sourceTree = "<group>"; };
+		863D9A9F20284B4600ED4F50 /* LLSettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSettingController.h; sourceTree = "<group>"; };
+		863D9AA020284B4600ED4F50 /* LLRedEnvelopesMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLRedEnvelopesMgr.h; sourceTree = "<group>"; };
+		863D9AA620284B8600ED4F50 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		863D9AA820284B8B00ED4F50 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		863D9AAC20284D7900ED4F50 /* CMessageMgr-Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CMessageMgr-Hook.m"; sourceTree = "<group>"; };
+		863D9AB020284EAD00ED4F50 /* MMLocationMgr-Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MMLocationMgr-Hook.m"; sourceTree = "<group>"; };
+		863D9AB4202850BF00ED4F50 /* QMapView-Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "QMapView-Hook.m"; sourceTree = "<group>"; };
+		863D9AB82028546200ED4F50 /* Main-Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Main-Hook.m"; sourceTree = "<group>"; };
+		863D9ABC2028561F00ED4F50 /* WCRedEnvelopesReceiveHomeView-Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WCRedEnvelopesReceiveHomeView-Hook.m"; sourceTree = "<group>"; };
+		863D9ABF2028578100ED4F50 /* MMUIWindow-Hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MMUIWindow-Hook.m"; sourceTree = "<group>"; };
+		863D9AC1202858CA00ED4F50 /* NewSettingViewController-Hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NewSettingViewController-Hook.m"; sourceTree = "<group>"; };
+		863D9ADA202ACAE500ED4F50 /* WCDeviceStepObject-Hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCDeviceStepObject-Hook.m"; sourceTree = "<group>"; };
+		863D9ADC202ACE9600ED4F50 /* UIViewController-Hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController-Hook.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8600E51F1DD2CF2000D60BFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				863D9AA920284B8B00ED4F50 /* AVFoundation.framework in Frameworks */,
+				863D9AA720284B8600ED4F50 /* CoreLocation.framework in Frameworks */,
+				8600E5271DD2CF2000D60BFA /* Foundation.framework in Frameworks */,
+				8600E5291DD2CF2000D60BFA /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8600E5191DD2CF1F00D60BFA = {
+			isa = PBXGroup;
+			children = (
+				8600E52A1DD2CF2000D60BFA /* CrackWeChat */,
+				8600E5251DD2CF2000D60BFA /* Frameworks */,
+				8600E5241DD2CF2000D60BFA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8600E5241DD2CF2000D60BFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8600E5231DD2CF2000D60BFA /* libCrackWeChat.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8600E5251DD2CF2000D60BFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				863D9AA820284B8B00ED4F50 /* AVFoundation.framework */,
+				863D9AA620284B8600ED4F50 /* CoreLocation.framework */,
+				8600E5261DD2CF2000D60BFA /* Foundation.framework */,
+				8600E5281DD2CF2000D60BFA /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8600E52A1DD2CF2000D60BFA /* CrackWeChat */ = {
+			isa = PBXGroup;
+			children = (
+				8600E5341DD2CF2000D60BFA /* CrackWeChat.m */,
+				8600E53E1DD2CF5400D60BFA /* CaptainHook.h */,
+				863D9AA020284B4600ED4F50 /* LLRedEnvelopesMgr.h */,
+				863D9A9E20284B4500ED4F50 /* LLRedEnvelopesMgr.m */,
+				863D9A9F20284B4600ED4F50 /* LLSettingController.h */,
+				863D9A9A20284B4500ED4F50 /* LLSettingController.m */,
+				863D9A9C20284B4500ED4F50 /* WCRedEnvelopesHelper.h */,
+				863D9AAC20284D7900ED4F50 /* CMessageMgr-Hook.m */,
+				863D9AB020284EAD00ED4F50 /* MMLocationMgr-Hook.m */,
+				863D9AB4202850BF00ED4F50 /* QMapView-Hook.m */,
+				863D9AB82028546200ED4F50 /* Main-Hook.m */,
+				863D9ABF2028578100ED4F50 /* MMUIWindow-Hook.m */,
+				863D9ABC2028561F00ED4F50 /* WCRedEnvelopesReceiveHomeView-Hook.m */,
+				863D9AC1202858CA00ED4F50 /* NewSettingViewController-Hook.m */,
+				863D9ADA202ACAE500ED4F50 /* WCDeviceStepObject-Hook.m */,
+				863D9ADC202ACE9600ED4F50 /* UIViewController-Hook.m */,
+				8600E52B1DD2CF2000D60BFA /* Package */,
+				8600E52F1DD2CF2000D60BFA /* Supporting Files */,
+			);
+			path = CrackWeChat;
+			sourceTree = "<group>";
+		};
+		8600E52B1DD2CF2000D60BFA /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				8600E52C1DD2CF2000D60BFA /* DEBIAN */,
+				8600E5361DD2CF2000D60BFA /* usr */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		8600E52C1DD2CF2000D60BFA /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				8600E52D1DD2CF2000D60BFA /* control.txt */,
+				8600E52E1DD2CF2000D60BFA /* control */,
+			);
+			name = DEBIAN;
+			sourceTree = "<group>";
+		};
+		8600E52F1DD2CF2000D60BFA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8600E5301DD2CF2000D60BFA /* PackageVersion.plist */,
+				8600E5311DD2CF2000D60BFA /* CrackWeChat-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8600E5361DD2CF2000D60BFA /* usr */ = {
+			isa = PBXGroup;
+			children = (
+				8600E5371DD2CF2000D60BFA /* lib */,
+			);
+			name = usr;
+			sourceTree = "<group>";
+		};
+		8600E5371DD2CF2000D60BFA /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				8600E5381DD2CF2000D60BFA /* 0xdeadfa11 */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8600E5201DD2CF2000D60BFA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				863D9AA220284B4600ED4F50 /* WCRedEnvelopesHelper.h in Headers */,
+				863D9AA420284B4600ED4F50 /* LLSettingController.h in Headers */,
+				8600E53F1DD2CF5400D60BFA /* CaptainHook.h in Headers */,
+				863D9AA520284B4600ED4F50 /* LLRedEnvelopesMgr.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8600E5221DD2CF2000D60BFA /* CrackWeChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8600E53B1DD2CF2000D60BFA /* Build configuration list for PBXNativeTarget "CrackWeChat" */;
+			buildPhases = (
+				8600E51E1DD2CF2000D60BFA /* Sources */,
+				8600E51F1DD2CF2000D60BFA /* Frameworks */,
+				8600E5201DD2CF2000D60BFA /* Headers */,
+				8600E5211DD2CF2000D60BFA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CrackWeChat;
+			productName = CrackWeChat;
+			productReference = 8600E5231DD2CF2000D60BFA /* libCrackWeChat.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8600E51A1DD2CF1F00D60BFA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				TargetAttributes = {
+					8600E5221DD2CF2000D60BFA = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 8600E51D1DD2CF1F00D60BFA /* Build configuration list for PBXProject "CrackWeChat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8600E5191DD2CF1F00D60BFA;
+			productRefGroup = 8600E5241DD2CF2000D60BFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8600E5221DD2CF2000D60BFA /* CrackWeChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8600E5211DD2CF2000D60BFA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8600E51E1DD2CF2000D60BFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				863D9AB6202850BF00ED4F50 /* QMapView-Hook.m in Sources */,
+				863D9AC02028578100ED4F50 /* MMUIWindow-Hook.m in Sources */,
+				863D9ADB202ACAE500ED4F50 /* WCDeviceStepObject-Hook.m in Sources */,
+				863D9AA120284B4600ED4F50 /* LLSettingController.m in Sources */,
+				863D9ABE2028561F00ED4F50 /* WCRedEnvelopesReceiveHomeView-Hook.m in Sources */,
+				863D9ADD202ACE9600ED4F50 /* UIViewController-Hook.m in Sources */,
+				863D9AAE20284D7900ED4F50 /* CMessageMgr-Hook.m in Sources */,
+				863D9ABA2028546200ED4F50 /* Main-Hook.m in Sources */,
+				8600E5351DD2CF2000D60BFA /* CrackWeChat.m in Sources */,
+				863D9AC2202858CA00ED4F50 /* NewSettingViewController-Hook.m in Sources */,
+				863D9AB220284EAD00ED4F50 /* MMLocationMgr-Hook.m in Sources */,
+				863D9AA320284B4600ED4F50 /* LLRedEnvelopesMgr.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8600E5391DD2CF2000D60BFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Debug;
+		};
+		8600E53A1DD2CF2000D60BFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Release;
+		};
+		8600E53C1DD2CF2000D60BFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CrackWeChat/CrackWeChat-Prefix.pch";
+				INSTALL_PATH = /usr/lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Debug;
+		};
+		8600E53D1DD2CF2000D60BFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CrackWeChat/CrackWeChat-Prefix.pch";
+				INSTALL_PATH = /usr/lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8600E51D1DD2CF1F00D60BFA /* Build configuration list for PBXProject "CrackWeChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8600E5391DD2CF2000D60BFA /* Debug */,
+				8600E53A1DD2CF2000D60BFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8600E53B1DD2CF2000D60BFA /* Build configuration list for PBXNativeTarget "CrackWeChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8600E53C1DD2CF2000D60BFA /* Debug */,
+				8600E53D1DD2CF2000D60BFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8600E51A1DD2CF1F00D60BFA /* Project object */;
+}
