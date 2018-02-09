@@ -26,9 +26,15 @@ CHMethod(1, void, CMessageMgr, onRevokeMsg, id, message)
 CHMethod(2, void, CMessageMgr, AsyncOnAddMsg, id, from, MsgWrap, id, msgWrap)
 {
     CHSuper(2, CMessageMgr, AsyncOnAddMsg, from, MsgWrap, msgWrap);
+    
+    NSLog(@"CrackWeChat CMessageMgr:: AsyncOnAddMsg %@, %@", from, msgWrap);
 
     if([LLRedEnvelopesMgr shared].isOpenRedEnvelopesHelper){
         //CMessageWrap *msgWrap = ext[@"3"];
+        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"CMessageMgr" message:@"AsyncOnAddMsg" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+        
         [[LLRedEnvelopesMgr shared] handleMessageWithMessageWrap:msgWrap isBackground:NO];
     }
 }

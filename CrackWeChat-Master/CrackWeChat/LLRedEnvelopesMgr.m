@@ -193,6 +193,7 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
             break;
         }
     }
+    
     if (msgContentVC) {
         [mainVC.navigationController PushViewController:msgContentVC animated:YES];
     } else {

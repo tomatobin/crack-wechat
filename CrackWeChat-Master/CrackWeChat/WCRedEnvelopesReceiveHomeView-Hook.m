@@ -23,12 +23,19 @@ CHMethod(3, id, WCRedEnvelopesReceiveHomeView, initWithFrame, CGRect, frame, and
         return view;
     }
     
-    float randomDelay = ((rand() % 100 + 1) / 100.0) * [LLRedEnvelopesMgr shared].openRedEnvelopesDelaySecond ;
+    NSLog(@"CrackWeChat WCRedEnvelopesReceiveHomeView:: initWithFrame %@, %@", data, delegate);
     
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Red" message:[NSString stringWithFormat:@"Random delay:%0.2f", randomDelay] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [alert show];
+    float randomDelay = ((rand() % 10 + 5.0) / 15.0) * [LLRedEnvelopesMgr shared].openRedEnvelopesDelaySecond;
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, randomDelay), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(randomDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WCRedEnvelopesReceiveHomeView" message:[NSString stringWithFormat:@"Random delay:%0.2f", randomDelay] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [alert dismissWithClickedButtonIndex:0 animated:YES];
+//        });
+        
         //打开红包
         [view OnOpenRedEnvelopes];
     });

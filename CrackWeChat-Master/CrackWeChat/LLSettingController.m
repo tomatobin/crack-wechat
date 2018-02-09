@@ -40,6 +40,9 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
 
 - (void)commonInit{
     _settingParam = [[LLSettingParam alloc] init];
+    
+    //默认延迟参数0.2s
+    _settingParam.openRedEnvelopesDelaySecond = 0.2;
 
     LLRedEnvelopesMgr *manager = [LLRedEnvelopesMgr shared];
     _settingParam.isOpenRedEnvelopesHelper = manager.isOpenRedEnvelopesHelper;
@@ -62,9 +65,6 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
     _settingParam.wantSportStepCount = manager.wantSportStepCount;
     _settingParam.filterRoomDic = manager.filterRoomDic;
     _settingParam.virtualLocation = manager.virtualLocation;
-    
-    //默认延迟参数0.2s
-    _settingParam.openRedEnvelopesDelaySecond = 0.2;
 
     _contactsDataLogic = [[NSClassFromString(@"ContactsDataLogic") alloc] initWithScene:0x0 delegate:nil sort:0x1 extendChatRoom:0x0];
 
@@ -103,9 +103,10 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
     MMTableViewCellInfo *delayTimeCell = [NSClassFromString(@"MMTableViewCellInfo") editorCellForSel:nil target:nil title:@"随机延迟秒数" margin:150 tip:@"输入延迟抢红包秒数" focus:NO autoCorrect:NO text:[NSString stringWithFormat:@"%.2f",_settingParam.openRedEnvelopesDelaySecond] isFitIpadClassic:YES];
     [delayTimeCell addUserInfoValue:@(UIKeyboardTypeDecimalPad) forKey:@"keyboardType"];
     [delayTimeCell addUserInfoValue:@"delayTimeCell" forKey:@"cellType"];
+    objc_setAssociatedObject(delayTimeCell, &kSettingControllerKey, self, OBJC_ASSOCIATION_ASSIGN);
     
 //    MMTableViewCellInfo *filterRoomCell = [NSClassFromString(@"MMTableViewCellInfo") normalCellForSel:@selector(onfilterRoomCellClicked) target:self title:@"过滤群聊" rightValue:self.settingParam.filterRoomDic.count?[NSString stringWithFormat:@"已选%ld个群聊",(long)self.settingParam.filterRoomDic.count]:@"暂未选择" accessoryType:1];
-//    objc_setAssociatedObject(delayTimeCell, &kSettingControllerKey, self, OBJC_ASSOCIATION_ASSIGN);
+
     
     MMTableViewCellInfo *openAutoReplyCell = [NSClassFromString(@"MMTableViewCellInfo") switchCellForSel:@selector(openAutoReplySwitchHandler:) target:self title:@"红包领取后自动回复" on:_settingParam.isOpenAutoReply];
     
