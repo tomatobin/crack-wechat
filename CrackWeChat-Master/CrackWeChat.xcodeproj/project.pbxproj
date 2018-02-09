@@ -27,7 +27,22 @@
 		863D9AC2202858CA00ED4F50 /* NewSettingViewController-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9AC1202858CA00ED4F50 /* NewSettingViewController-Hook.m */; };
 		863D9ADB202ACAE500ED4F50 /* WCDeviceStepObject-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9ADA202ACAE500ED4F50 /* WCDeviceStepObject-Hook.m */; };
 		863D9ADD202ACE9600ED4F50 /* UIViewController-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9ADC202ACE9600ED4F50 /* UIViewController-Hook.m */; };
+		863D9C44202D9A6C00ED4F50 /* NSBundle-Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = 863D9C43202D9A6B00ED4F50 /* NSBundle-Hook.m */; };
+		863D9C48202D9E7900ED4F50 /* libCrackWeChat.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8600E5231DD2CF2000D60BFA /* libCrackWeChat.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		863D9C47202D9E6200ED4F50 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${SRCROOT}/../_6.6.3";
+			dstSubfolderSpec = 0;
+			files = (
+				863D9C48202D9E7900ED4F50 /* libCrackWeChat.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8600E5231DD2CF2000D60BFA /* libCrackWeChat.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libCrackWeChat.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +71,7 @@
 		863D9AC1202858CA00ED4F50 /* NewSettingViewController-Hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NewSettingViewController-Hook.m"; sourceTree = "<group>"; };
 		863D9ADA202ACAE500ED4F50 /* WCDeviceStepObject-Hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WCDeviceStepObject-Hook.m"; sourceTree = "<group>"; };
 		863D9ADC202ACE9600ED4F50 /* UIViewController-Hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController-Hook.m"; sourceTree = "<group>"; };
+		863D9C43202D9A6B00ED4F50 /* NSBundle-Hook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle-Hook.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +136,7 @@
 				863D9AC1202858CA00ED4F50 /* NewSettingViewController-Hook.m */,
 				863D9ADA202ACAE500ED4F50 /* WCDeviceStepObject-Hook.m */,
 				863D9ADC202ACE9600ED4F50 /* UIViewController-Hook.m */,
+				863D9C43202D9A6B00ED4F50 /* NSBundle-Hook.m */,
 				8600E52B1DD2CF2000D60BFA /* Package */,
 				8600E52F1DD2CF2000D60BFA /* Supporting Files */,
 			);
@@ -193,6 +210,7 @@
 				8600E51E1DD2CF2000D60BFA /* Sources */,
 				8600E51F1DD2CF2000D60BFA /* Frameworks */,
 				8600E5201DD2CF2000D60BFA /* Headers */,
+				863D9C47202D9E6200ED4F50 /* CopyFiles */,
 				8600E5211DD2CF2000D60BFA /* ShellScript */,
 			);
 			buildRules = (
@@ -246,7 +264,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp";
+			shellScript = "cd ${PROJECT_DIR}/../_6.6.3\n./build.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -256,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				863D9AB6202850BF00ED4F50 /* QMapView-Hook.m in Sources */,
+				863D9C44202D9A6C00ED4F50 /* NSBundle-Hook.m in Sources */,
 				863D9AC02028578100ED4F50 /* MMUIWindow-Hook.m in Sources */,
 				863D9ADB202ACAE500ED4F50 /* WCDeviceStepObject-Hook.m in Sources */,
 				863D9AA120284B4600ED4F50 /* LLSettingController.m in Sources */,

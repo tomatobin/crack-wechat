@@ -41,8 +41,8 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
 - (void)commonInit{
     _settingParam = [[LLSettingParam alloc] init];
     
-    //默认延迟参数0.2s
-    _settingParam.openRedEnvelopesDelaySecond = 0.2;
+    //默认延迟参数1.0
+    _settingParam.openRedEnvelopesDelaySecond = 1.0;
 
     LLRedEnvelopesMgr *manager = [LLRedEnvelopesMgr shared];
     _settingParam.isOpenRedEnvelopesHelper = manager.isOpenRedEnvelopesHelper;
