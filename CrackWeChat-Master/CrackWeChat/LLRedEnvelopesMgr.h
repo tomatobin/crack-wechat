@@ -21,6 +21,7 @@
 @property (nonatomic, assign) BOOL isOpenSportHelper; //是否开启步数助手
 @property (nonatomic, assign) BOOL isOpenBackgroundMode; //是否开启后台模式
 @property (nonatomic, assign) BOOL isOpenRedEnvelopesAlert; //是否开启红包提醒
+@property (nonatomic, assign) BOOL isOpenRedEnvelopesSound; //是否开启红包提醒声音
 @property (nonatomic, assign) BOOL isOpenVirtualLocation; //是否打开虚拟定位
 @property (nonatomic, assign) BOOL isOpenAutoReply; //是否打开自动回复
 @property (nonatomic, assign) BOOL isOpenAutoLeaveMessage; //是否打开自动留言

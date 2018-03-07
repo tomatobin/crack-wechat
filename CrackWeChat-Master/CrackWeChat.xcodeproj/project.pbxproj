@@ -264,7 +264,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ${PROJECT_DIR}/../_6.6.3\n./build.sh\n";
+			shellScript = "#cd ${PROJECT_DIR}/../_6.6.3\n#./build.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

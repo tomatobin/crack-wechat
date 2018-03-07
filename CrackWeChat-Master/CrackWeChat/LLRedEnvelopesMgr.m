@@ -14,6 +14,7 @@ static NSString * const isOpenRedEnvelopesHelperKey = @"isOpenRedEnvelopesHelper
 static NSString * const isOpenSportHelperKey = @"isOpenSportHelperKey";
 static NSString * const isOpenBackgroundModeKey = @"isOpenBackgroundModeKey";
 static NSString * const isOpenRedEnvelopesAlertKey = @"isOpenRedEnvelopesAlertKey";
+static NSString * const isOpenRedEnvelopesSoundKey = @"isOpenRedEnvelopesSoundKey";
 static NSString * const isOpenVirtualLocationKey = @"isOpenVirtualLocationKey";
 static NSString * const isOpenAutoReplyKey = @"isOpenAutoReplyKey";
 static NSString * const isOpenAutoLeaveMessageKey = @"isOpenAutoLeaveMessageKey";
@@ -48,6 +49,7 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
         _isOpenSportHelper = [userDefaults boolForKey:isOpenSportHelperKey];
         _isOpenBackgroundMode = [userDefaults boolForKey:isOpenBackgroundModeKey];
         _isOpenRedEnvelopesAlert = [userDefaults boolForKey:isOpenRedEnvelopesAlertKey];
+        _isOpenRedEnvelopesSound = [userDefaults boolForKey:isOpenRedEnvelopesSoundKey];
         _isOpenVirtualLocation = [userDefaults boolForKey:isOpenVirtualLocationKey];
         _isOpenAutoReply = [userDefaults boolForKey:isOpenAutoReplyKey];
         _isOpenAutoLeaveMessage = [userDefaults boolForKey:isOpenAutoLeaveMessageKey];
@@ -110,6 +112,7 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
     [userDefaults setBool:_isOpenSportHelper forKey:isOpenSportHelperKey];
     [userDefaults setBool:_isOpenBackgroundMode forKey:isOpenBackgroundModeKey];
     [userDefaults setBool:_isOpenRedEnvelopesAlert forKey:isOpenRedEnvelopesAlertKey];
+    [userDefaults setBool:_isOpenRedEnvelopesSound forKey:isOpenRedEnvelopesSoundKey];
     [userDefaults setBool:_isOpenVirtualLocation forKey:isOpenVirtualLocationKey];
     [userDefaults setBool:_isOpenAutoReply forKey:isOpenAutoReplyKey];
     [userDefaults setBool:_isOpenAutoLeaveMessage forKey:isOpenAutoLeaveMessageKey];
@@ -272,7 +275,9 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 
 //播放收到红包音频
 - (void)playCashReceivedAudio{
-    [self playAudioForResource:@"cash_received" ofType:@"caf"];
+    if (self.isOpenRedEnvelopesSound) {
+       [self playAudioForResource:@"cash_received" ofType:@"caf"];
+    }
 }
 
 //播放无声音频

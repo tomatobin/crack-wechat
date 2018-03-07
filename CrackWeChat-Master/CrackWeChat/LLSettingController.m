@@ -49,6 +49,7 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
     _settingParam.isOpenSportHelper = manager.isOpenSportHelper;
     _settingParam.isOpenBackgroundMode = manager.isOpenBackgroundMode;
     _settingParam.isOpenRedEnvelopesAlert = manager.isOpenRedEnvelopesAlert;
+    _settingParam.isOpenRedEnvelopesSound = manager.isOpenRedEnvelopesSound;
     _settingParam.openRedEnvelopesDelaySecond = manager.openRedEnvelopesDelaySecond;
     _settingParam.isOpenVirtualLocation = manager.isOpenVirtualLocation;
     _settingParam.isOpenAutoReply = manager.isOpenAutoReply;
@@ -100,6 +101,8 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
     
     MMTableViewCellInfo *openAlertCell = [NSClassFromString(@"MMTableViewCellInfo") switchCellForSel:@selector(openRedEnvelopesAlertHandler:) target:self title:@"是否开启红包提醒" on:_settingParam.isOpenRedEnvelopesAlert];
     
+     MMTableViewCellInfo *openSoundCell = [NSClassFromString(@"MMTableViewCellInfo") switchCellForSel:@selector(openRedEnvelopesSoundHandler:) target:self title:@"是否开启红包提醒声音" on:_settingParam.isOpenRedEnvelopesSound];
+    
     MMTableViewCellInfo *delayTimeCell = [NSClassFromString(@"MMTableViewCellInfo") editorCellForSel:nil target:nil title:@"随机延迟秒数" margin:150 tip:@"输入延迟抢红包秒数" focus:NO autoCorrect:NO text:[NSString stringWithFormat:@"%.2f",_settingParam.openRedEnvelopesDelaySecond] isFitIpadClassic:YES];
     [delayTimeCell addUserInfoValue:@(UIKeyboardTypeDecimalPad) forKey:@"keyboardType"];
     [delayTimeCell addUserInfoValue:@"delayTimeCell" forKey:@"cellType"];
@@ -133,6 +136,7 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
     [redEnvelopesSection addCell:openRedEnvelopesCell];
     [redEnvelopesSection addCell:backgroundModeCell];
     [redEnvelopesSection addCell:openAlertCell];
+    [redEnvelopesSection addCell:openSoundCell];
     [redEnvelopesSection addCell:delayTimeCell];
 //    [redEnvelopesSection addCell:filterRoomCell];
     [redEnvelopesSection addCell:openAutoReplyCell];
@@ -207,6 +211,7 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
     manager.isOpenSportHelper = _settingParam.isOpenSportHelper;
     manager.isOpenBackgroundMode = _settingParam.isOpenBackgroundMode;
     manager.isOpenRedEnvelopesAlert = _settingParam.isOpenRedEnvelopesAlert;
+    manager.isOpenRedEnvelopesSound = _settingParam.isOpenRedEnvelopesSound;
     manager.openRedEnvelopesDelaySecond = _settingParam.openRedEnvelopesDelaySecond;
     manager.isOpenVirtualLocation = _settingParam.isOpenVirtualLocation;
     manager.isOpenAutoReply = _settingParam.isOpenAutoReply;
@@ -237,6 +242,10 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
 
 - (void)openRedEnvelopesAlertHandler:(UISwitch *)openSwitch{
     _settingParam.isOpenRedEnvelopesAlert = openSwitch.on;
+}
+
+- (void)openRedEnvelopesSoundHandler:(UISwitch *)openSwitch {
+    _settingParam.isOpenRedEnvelopesSound = openSwitch.on;
 }
 
 - (void)openAutoReplySwitchHandler:(UISwitch *)openSwitch{
