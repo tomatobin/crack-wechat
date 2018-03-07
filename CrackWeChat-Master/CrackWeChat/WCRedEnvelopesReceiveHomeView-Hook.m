@@ -40,7 +40,7 @@ CHMethod(3, id, WCRedEnvelopesReceiveHomeView, initWithFrame, CGRect, frame, and
         [view OnOpenRedEnvelopes];
     });
     
-    view.hidden = YES;
+    //view.hidden = YES;
     
     return view;
 }

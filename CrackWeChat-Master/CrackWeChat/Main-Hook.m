@@ -67,6 +67,7 @@ CHMethod(1, void, MicroMessengerAppDelegate, applicationWillEnterForeground, id,
 {
     CHSuper(1, MicroMessengerAppDelegate, applicationWillEnterForeground, application);
     [[LLRedEnvelopesMgr shared] reset];
+    [[LLRedEnvelopesMgr shared] enterForegroundHandler];
 }
 
 // - (void)applicationDidEnterBackground:(UIApplication *)application

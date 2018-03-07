@@ -41,8 +41,8 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
 - (void)commonInit{
     _settingParam = [[LLSettingParam alloc] init];
     
-    //默认延迟参数1.0
-    _settingParam.openRedEnvelopesDelaySecond = 1.0;
+    //默认延迟参数0.2s
+    _settingParam.openRedEnvelopesDelaySecond = 0.2;
 
     LLRedEnvelopesMgr *manager = [LLRedEnvelopesMgr shared];
     _settingParam.isOpenRedEnvelopesHelper = manager.isOpenRedEnvelopesHelper;
@@ -98,7 +98,7 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
     
     MMTableViewCellInfo *backgroundModeCell = [NSClassFromString(@"MMTableViewCellInfo") switchCellForSel:@selector(openBackgroundMode:) target:self title:@"是否开启后台模式" on:_settingParam.isOpenBackgroundMode];
     
-//    MMTableViewCellInfo *openAlertCell = [NSClassFromString(@"MMTableViewCellInfo") switchCellForSel:@selector(openRedEnvelopesAlertHandler:) target:self title:@"是否开启红包提醒" on:_settingParam.isOpenRedEnvelopesAlert];
+    MMTableViewCellInfo *openAlertCell = [NSClassFromString(@"MMTableViewCellInfo") switchCellForSel:@selector(openRedEnvelopesAlertHandler:) target:self title:@"是否开启红包提醒" on:_settingParam.isOpenRedEnvelopesAlert];
     
     MMTableViewCellInfo *delayTimeCell = [NSClassFromString(@"MMTableViewCellInfo") editorCellForSel:nil target:nil title:@"随机延迟秒数" margin:150 tip:@"输入延迟抢红包秒数" focus:NO autoCorrect:NO text:[NSString stringWithFormat:@"%.2f",_settingParam.openRedEnvelopesDelaySecond] isFitIpadClassic:YES];
     [delayTimeCell addUserInfoValue:@(UIKeyboardTypeDecimalPad) forKey:@"keyboardType"];
@@ -132,7 +132,7 @@ static NSString * const kSettingControllerKey = @"SettingControllerKey";
     [redEnvelopesSection setHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0,0,0,20)]];
     [redEnvelopesSection addCell:openRedEnvelopesCell];
     [redEnvelopesSection addCell:backgroundModeCell];
-//    [redEnvelopesSection addCell:openAlertCell];
+    [redEnvelopesSection addCell:openAlertCell];
     [redEnvelopesSection addCell:delayTimeCell];
 //    [redEnvelopesSection addCell:filterRoomCell];
     [redEnvelopesSection addCell:openAutoReplyCell];
