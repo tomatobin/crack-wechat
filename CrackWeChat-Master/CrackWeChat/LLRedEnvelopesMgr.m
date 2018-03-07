@@ -230,7 +230,7 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 - (void)successOpenRedEnvelopesNotification{
     if(self.isOpenRedEnvelopesAlert){
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-        localNotification.alertBody = @"帮您领了一个大红包！快去查看吧~";
+        localNotification.alertBody = @"领到一个红包~";
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
         [self playCashReceivedAudio];
