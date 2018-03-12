@@ -238,7 +238,7 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 }
 
 //程序进入前台，关闭后台申请定时器，节省电量
-- (void)enterForegroundHandler {
+- (void)becomeActiveHandler {
     UIApplication *app = [UIApplication sharedApplication];
     [app endBackgroundTask:self.bgTaskIdentifier];
     self.bgTaskIdentifier = UIBackgroundTaskInvalid;

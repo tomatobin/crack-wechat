@@ -70,7 +70,7 @@
 - (void)successOpenRedEnvelopesNotification;
 
 //程序进入前、后台处理
-- (void)enterForegroundHandler;
+- (void)becomeActiveHandler;
 - (void)enterBackgroundHandler;
 
 //保存虚拟位置POIInfo

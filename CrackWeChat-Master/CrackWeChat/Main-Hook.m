@@ -63,11 +63,11 @@ CHDeclareClass(MicroMessengerAppDelegate);
 
 //Hook的函数
 // - (void)applicationWillEnterForeground:(UIApplication *)application
-CHMethod(1, void, MicroMessengerAppDelegate, applicationWillEnterForeground, id, application)
+CHMethod(1, void, MicroMessengerAppDelegate, applicationDidBecomeActive, id, application)
 {
-    CHSuper(1, MicroMessengerAppDelegate, applicationWillEnterForeground, application);
+    CHSuper(1, MicroMessengerAppDelegate, applicationDidBecomeActive, application);
     [[LLRedEnvelopesMgr shared] reset];
-    [[LLRedEnvelopesMgr shared] enterForegroundHandler];
+    [[LLRedEnvelopesMgr shared] becomeActiveHandler];
 }
 
 // - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -103,7 +103,7 @@ __attribute__((constructor)) static void entry()
     CHClassHook(0, WCRedEnvelopesControlLogic, startLoading);
     
     CHLoadLateClass(MicroMessengerAppDelegate);
-    CHClassHook(1, MicroMessengerAppDelegate, applicationWillEnterForeground);
+    CHClassHook(1, MicroMessengerAppDelegate, applicationDidBecomeActive);
     CHClassHook(1, MicroMessengerAppDelegate, applicationDidEnterBackground);
     
     CHLoadLateClass(MMMsgLogicManager);

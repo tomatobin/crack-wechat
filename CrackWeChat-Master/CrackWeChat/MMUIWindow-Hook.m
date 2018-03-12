@@ -20,8 +20,8 @@ CHMethod(1, void, MMUIWindow, addSubview, id, subView)
 {
     if ([LLRedEnvelopesMgr shared].isOpenRedEnvelopesHelper &&
         [subView isKindOfClass:NSClassFromString(@"WCRedEnvelopesReceiveHomeView")]) {
-        //隐藏弹出红包领取完成页面所在window
-        ((UIView *)self).hidden = YES;
+        //Todo::隐藏弹出红包领取完成页面所在window
+        //((UIView *)self).hidden = YES;
     } else {
         CHSuper(1, MMUIWindow, addSubview, subView);
     }
