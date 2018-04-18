@@ -141,6 +141,12 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
         if(self.openRedEnvelopesBlock){
             self.openRedEnvelopesBlock();
         }
+    } else if([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+        //发送本地通知
+        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+        localNotification.alertBody = msgWrap.m_nsContent;
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
     }
 }
 
@@ -258,11 +264,14 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
         [app endBackgroundTask:self.bgTaskIdentifier];
         self.bgTaskIdentifier = UIBackgroundTaskInvalid;
     }];
-    self.bgTaskTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(requestMoreTime) userInfo:nil repeats:YES];
+    
+    //Mark:: 10s
+    self.bgTaskTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestMoreTime) userInfo:nil repeats:YES];
     [self.bgTaskTimer fire];
 }
 
 - (void)requestMoreTime{
+
     if ([UIApplication sharedApplication].backgroundTimeRemaining < 30) {
     	[self playBlankAudio];
         [[UIApplication sharedApplication] endBackgroundTask:self.bgTaskIdentifier];
