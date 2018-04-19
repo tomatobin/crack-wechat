@@ -141,12 +141,6 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
         if(self.openRedEnvelopesBlock){
             self.openRedEnvelopesBlock();
         }
-    } else if([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-        //发送本地通知
-        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-        localNotification.alertBody = msgWrap.m_nsContent;
-        localNotification.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
     }
 }
 
