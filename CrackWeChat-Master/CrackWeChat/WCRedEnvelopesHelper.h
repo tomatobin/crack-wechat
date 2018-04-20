@@ -18,6 +18,7 @@
 @property(retain, nonatomic) NSString *m_nsToUsr; // @synthesize m_nsToUsr;
 @property(retain, nonatomic) WCPayInfoItem *m_oWCPayInfoItem; // @dynamic m_oWCPayInfoItem;
 @property(nonatomic) unsigned int m_uiAppMsgInnerType; // @dynamic m_uiAppMsgInnerType;
+@property(nonatomic, copy) NSString *m_nsMsgSource;
 
 - (WCPayInfoItem *)m_oWCPayInfoItem;
 - (id)nativeUrl;

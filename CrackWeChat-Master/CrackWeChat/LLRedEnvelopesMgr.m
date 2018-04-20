@@ -28,7 +28,7 @@ static NSString * const keywordFilterTextKey = @"keywordFilterTextKey";
 static NSString * const autoReplyTextKey = @"autoReplyTextKey";
 static NSString * const autoLeaveMessageTextKey = @"autoLeaveMessageTextKey";
 static NSString * const openRedEnvelopesDelaySecondKey = @"openRedEnvelopesDelaySecondKey";
-static NSString * const wantSportStepCountKey = @"wantSportStepCountKey"; 
+static NSString * const wantSportStepCountKey = @"wantSportStepCountKey";
 static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 
 @implementation LLRedEnvelopesMgr
@@ -65,7 +65,7 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
         _openRedEnvelopesDelaySecond = [userDefaults floatForKey:openRedEnvelopesDelaySecondKey];
         _wantSportStepCount = [userDefaults integerForKey:wantSportStepCountKey];
         _filterRoomDic = [userDefaults objectForKey:filterRoomDicKey];
-
+        
         NSData *data = [NSData dataWithContentsOfFile:kArchiverLocationFilePath];
         if(data){
             @try{
@@ -133,7 +133,8 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 
 //处理微信消息,过滤红包消息
 - (void)handleMessageWithMessageWrap:(CMessageWrap *)msgWrap isBackground:(BOOL)isBackground{
-    if (msgWrap && msgWrap.m_uiMessageType == 49 && [self isSnatchRedEnvelopes:msgWrap]){
+    //49是红包消息，10000是领取红包消息
+    if (msgWrap && msgWrap.m_uiMessageType == 49  && [self isSnatchRedEnvelopes:msgWrap]){
         //红包消息
         self.lastMsgWrap = self.msgWrap;
         self.msgWrap = msgWrap;
@@ -141,6 +142,8 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
         if(self.openRedEnvelopesBlock){
             self.openRedEnvelopesBlock();
         }
+    } else if (msgWrap.m_uiMessageType == 10000) {
+        [self showLocalNotification:msgWrap];
     }
 }
 
@@ -152,27 +155,57 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
     return [selfContact isEqualToContact:senderContact];
 }
 
+- (void)showLocalNotification:(CMessageWrap *)msgWrap
+{
+    NSString *msgContent = nil;
+    if (msgWrap.m_n64MesSvrID == 0 &&
+        [msgWrap.m_nsContent containsString:@"SystemMessages_HongbaoIcon"]) { //领取红包通知
+        NSRange range = [msgWrap.m_nsContent rangeOfString:@"SystemMessages_HongbaoIcon.png\"/>"];
+        NSInteger startIndex = range.location + range.length;
+        range = [msgWrap.m_nsContent rangeOfString:@"<_wc_custom_link"];
+        NSInteger endIndex = range.location;
+        
+        if (endIndex > startIndex) {
+            msgContent = [msgWrap.m_nsContent substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
+            msgContent = [NSString stringWithFormat:@"%@红包", msgContent];
+        }
+    }
+    
+    if (msgContent) {
+        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+        localNotification.alertBody = msgContent;
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+    }
+}
+
 //判断是否抢红包
 - (BOOL)isSnatchRedEnvelopes:(CMessageWrap *)msgWrap{
     unsigned int appMsgInnerType = msgWrap.m_uiAppMsgInnerType;
     if(appMsgInnerType == 0x1 || appMsgInnerType == 0xa){
         return NO;
     }
+    
     if(!(appMsgInnerType != 0x7d0 || msgWrap.m_oWCPayInfoItem.m_uiPaySubType >= 0xb)){
         return NO;
     }
-    if(appMsgInnerType != 0x7d1 || msgWrap.m_oWCPayInfoItem.m_sceneId != 0x3ea){
+    
+    if(appMsgInnerType != 0x7d1 || msgWrap.m_oWCPayInfoItem.m_sceneId != 0x3ea) { //领取
         return NO;
     }
+    
     if(!((msgWrap.m_n64MesSvrID == 0 && msgWrap.m_oWCPayInfoItem.m_nsPayMsgID != self.lastMsgWrap.m_oWCPayInfoItem.m_nsPayMsgID) || msgWrap.m_n64MesSvrID != self.lastMsgWrap.m_n64MesSvrID)){
         return NO; //过滤领取红包消息
     }
+    
     if([self isMySendMsgWithMsgWrap:msgWrap]){
         return _isSnatchSelfRedEnvelopes;
     }
+    
     if(_filterRoomDic && _filterRoomDic[msgWrap.m_nsFromUsr]){
         return NO; //过滤群组
     }
+    
     if(_isOpenKeywordFilter){
         NSString *wishing = [msgWrap wishingString];
         NSArray *keywords = [_keywordFilterText componentsSeparatedByString:@","];
@@ -229,8 +262,10 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 
 - (void)successOpenRedEnvelopesNotification{
     if(self.isOpenRedEnvelopesAlert){
+        NSString *msgContent = [NSString stringWithFormat:@"%@ %@", _msgWrap.m_nsFromUsr, _msgWrap.m_nsContent];
+        
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-        localNotification.alertBody = @"领到一个红包~";
+        localNotification.alertBody = msgContent;
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
         [self playCashReceivedAudio];
@@ -265,9 +300,9 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 }
 
 - (void)requestMoreTime{
-
+    
     if ([UIApplication sharedApplication].backgroundTimeRemaining < 30) {
-    	[self playBlankAudio];
+        [self playBlankAudio];
         [[UIApplication sharedApplication] endBackgroundTask:self.bgTaskIdentifier];
         self.bgTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
             [[UIApplication sharedApplication] endBackgroundTask:self.bgTaskIdentifier];
@@ -279,7 +314,7 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 //播放收到红包音频
 - (void)playCashReceivedAudio{
     if (self.isOpenRedEnvelopesSound) {
-       [self playAudioForResource:@"cash_received" ofType:@"caf"];
+        [self playAudioForResource:@"cash_received" ofType:@"caf"];
     }
 }
 
@@ -338,8 +373,16 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 }
 
 //在指定范围生成随机数
-- (long)genRandomNumberFrom:(long)from to:(long)to{  
-    return (long)(from + (arc4random() % (to - from + 1)));  
-}  
+- (long)genRandomNumberFrom:(long)from to:(long)to{
+    return (long)(from + (arc4random() % (to - from + 1)));
+}
 
+#pragma mark - Extra
+- (BOOL)isSilentMessage:(CMessageWrap *)msgWrap
+{
+    if ([msgWrap.m_nsMsgSource containsString:@"<silence>1</silence>"]) {
+        return true;
+    }
+    return false;
+}
 @end
