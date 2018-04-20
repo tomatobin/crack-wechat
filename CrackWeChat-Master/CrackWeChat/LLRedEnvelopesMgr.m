@@ -134,7 +134,7 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 //处理微信消息,过滤红包消息
 - (void)handleMessageWithMessageWrap:(CMessageWrap *)msgWrap isBackground:(BOOL)isBackground{
     //49是红包消息，10000是领取红包消息
-    if (msgWrap && msgWrap.m_uiMessageType == 49  && [self isSnatchRedEnvelopes:msgWrap]){
+    if (msgWrap && msgWrap.m_uiMessageType == 49 && [self isSnatchRedEnvelopes:msgWrap]){
         //红包消息
         self.lastMsgWrap = self.msgWrap;
         self.msgWrap = msgWrap;
@@ -142,8 +142,9 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
         if(self.openRedEnvelopesBlock){
             self.openRedEnvelopesBlock();
         }
-    } else if (msgWrap.m_uiMessageType == 10000) {
-        [self showLocalNotification:msgWrap];
+    }
+    else if (msgWrap.m_uiMessageType == 10000) {
+        [self showLocalRedEnvelopsNotification:msgWrap];
     }
 }
 
@@ -153,30 +154,6 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
     CContact *selfContact = [contactMgr getSelfContact];
     CContact *senderContact = [contactMgr getContactByName:msgWrap.m_nsFromUsr];
     return [selfContact isEqualToContact:senderContact];
-}
-
-- (void)showLocalNotification:(CMessageWrap *)msgWrap
-{
-    NSString *msgContent = nil;
-    if (msgWrap.m_n64MesSvrID == 0 &&
-        [msgWrap.m_nsContent containsString:@"SystemMessages_HongbaoIcon"]) { //领取红包通知
-        NSRange range = [msgWrap.m_nsContent rangeOfString:@"SystemMessages_HongbaoIcon.png\"/>"];
-        NSInteger startIndex = range.location + range.length;
-        range = [msgWrap.m_nsContent rangeOfString:@"<_wc_custom_link"];
-        NSInteger endIndex = range.location;
-        
-        if (endIndex > startIndex) {
-            msgContent = [msgWrap.m_nsContent substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
-            msgContent = [NSString stringWithFormat:@"%@红包", msgContent];
-        }
-    }
-    
-    if (msgContent) {
-        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-        localNotification.alertBody = msgContent;
-        localNotification.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
-    }
 }
 
 //判断是否抢红包
@@ -261,14 +238,38 @@ static NSString * const filterRoomDicKey = @"filterRoomDicKey";
 }
 
 - (void)successOpenRedEnvelopesNotification{
-    if(self.isOpenRedEnvelopesAlert){
-        NSString *msgContent = [NSString stringWithFormat:@"%@ %@", _msgWrap.m_nsFromUsr, _msgWrap.m_nsContent];
+//    if(self.isOpenRedEnvelopesAlert){
+//        NSString *msgContent = [NSString stringWithFormat:@"%@ %@", _msgWrap.m_nsFromUsr, _msgWrap.m_nsContent];
+//
+//        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+//        localNotification.alertBody = msgContent;
+//        localNotification.soundName = UILocalNotificationDefaultSoundName;
+//        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+//        [self playCashReceivedAudio];
+//    }
+}
+
+- (void)showLocalRedEnvelopsNotification:(CMessageWrap *)msgWrap
+{
+    NSString *msgContent = nil;
+    if (msgWrap.m_n64MesSvrID == 0 &&
+        [msgWrap.m_nsContent hasPrefix:@"<img src=\"SystemMessages_HongbaoIcon.png"]) { //领取红包通知
+        NSRange range = [msgWrap.m_nsContent rangeOfString:@"SystemMessages_HongbaoIcon.png\"/>"];
+        NSInteger startIndex = range.location + range.length;
+        range = [msgWrap.m_nsContent rangeOfString:@"<_wc_custom_link"];
+        NSInteger endIndex = range.location;
         
+        if (endIndex > startIndex) {
+            msgContent = [msgWrap.m_nsContent substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
+            msgContent = [NSString stringWithFormat:@"%@红包", msgContent];
+        }
+    }
+    
+    if (msgContent) {
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
         localNotification.alertBody = msgContent;
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
-        [self playCashReceivedAudio];
     }
 }
 
